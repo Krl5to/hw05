@@ -1,7 +1,9 @@
 package guru.qa;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.DragAndDropOptions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -19,13 +21,13 @@ public class HW05DragAndDropTest {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#column-a header").shouldHave(text("A"));
         $("#column-b header").shouldHave(text("B"));
-        $("#column-a").dragAndDropTo($("#column-b"));
+        $("#column-a").dragAndDrop(DragAndDropOptions.to($("#column-b")));
         $("#column-a header").shouldHave(text("B"));
         $("#column-b header").shouldHave(text("A"));
-
     }
 
     @Test
+    @Disabled("actions() doesn't work on this website")
     void dragAndDropActions() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#column-a header").shouldHave(text("A"));
